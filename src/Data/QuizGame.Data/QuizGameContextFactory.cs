@@ -2,11 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using QuizApp.Web.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace QuizGame.Data
 {

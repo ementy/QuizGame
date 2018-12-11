@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using QuizApp.Web.Areas.Identity.Data;
+using QuizGame.Data.Models;
 
-namespace QuizApp.Web.Models
+namespace QuizGame.Data
 {
     public class QuizGameContext : IdentityDbContext<QuizGameUser>
     {

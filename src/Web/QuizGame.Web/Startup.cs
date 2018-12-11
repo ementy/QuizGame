@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using QuizApp.Web.Areas.Identity.Data;
-using QuizApp.Web.Models;
+using QuizGame.Data;
+using QuizGame.Data.Models;
 
 namespace QuizApp.Web
 {

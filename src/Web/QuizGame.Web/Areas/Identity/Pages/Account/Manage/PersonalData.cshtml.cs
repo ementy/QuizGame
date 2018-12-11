@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using QuizApp.Web.Areas.Identity.Data;
+using QuizGame.Data.Models;
 
 namespace QuizApp.Web.Areas.Identity.Pages.Account.Manage
 {

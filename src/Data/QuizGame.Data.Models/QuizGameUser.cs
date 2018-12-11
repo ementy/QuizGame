@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace QuizApp.Web.Areas.Identity.Data
+namespace QuizGame.Data.Models
 {
     // Add profile data for application users by adding properties to the QuizAppUser class
     public class QuizGameUser : IdentityUser
