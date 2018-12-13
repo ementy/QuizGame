@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using QuizGame.Data.Models;
+using QuizGame.Data;
 
 namespace QuizGame.Data.Migrations
 {
@@ -129,7 +129,98 @@ namespace QuizGame.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("QuizApp.Web.Areas.Identity.Data.QuizGameUser", b =>
+            modelBuilder.Entity("QuizGame.Data.Models.Achievement", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CorrectAnswers");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("QuizGameUserId");
+
+                    b.Property<int>("RewardAmount");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizGameUserId");
+
+                    b.ToTable("Achievements");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<bool>("IsCorrect");
+
+                    b.Property<int>("QuestionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Level", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CategoryId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Levels");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("Difficulty");
+
+                    b.Property<string>("LevelId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("LevelId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.QuizGameUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -160,6 +251,8 @@ namespace QuizGame.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<int>("Points");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -180,6 +273,21 @@ namespace QuizGame.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("QuizGame.Data.Models.UserQuestion", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("QuestionId");
+
+                    b.Property<string>("Id");
+
+                    b.HasKey("UserId", "QuestionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Likes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -190,7 +298,7 @@ namespace QuizGame.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("QuizApp.Web.Areas.Identity.Data.QuizGameUser")
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -198,7 +306,7 @@ namespace QuizGame.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("QuizApp.Web.Areas.Identity.Data.QuizGameUser")
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -211,7 +319,7 @@ namespace QuizGame.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("QuizApp.Web.Areas.Identity.Data.QuizGameUser")
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -219,8 +327,55 @@ namespace QuizGame.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("QuizApp.Web.Areas.Identity.Data.QuizGameUser")
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser")
                         .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Achievement", b =>
+                {
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser")
+                        .WithMany("CompletedAchievements")
+                        .HasForeignKey("QuizGameUserId");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Answer", b =>
+                {
+                    b.HasOne("QuizGame.Data.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Level", b =>
+                {
+                    b.HasOne("QuizGame.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.Question", b =>
+                {
+                    b.HasOne("QuizGame.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("QuizGame.Data.Models.Level")
+                        .WithMany("Questions")
+                        .HasForeignKey("LevelId");
+                });
+
+            modelBuilder.Entity("QuizGame.Data.Models.UserQuestion", b =>
+                {
+                    b.HasOne("QuizGame.Data.Models.Question", "Question")
+                        .WithMany("LikedBy")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("QuizGame.Data.Models.QuizGameUser", "User")
+                        .WithMany("LikedQuestions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

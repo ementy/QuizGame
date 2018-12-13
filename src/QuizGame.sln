@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGame.Web", "Web\QuizGame.Web\QuizGame.Web.csproj", "{5DC82727-0BF3-47DE-AE18-5303E7DA39C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizGame.Web", "Web\QuizGame.Web\QuizGame.Web.csproj", "{5DC82727-0BF3-47DE-AE18-5303E7DA39C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A5FCA498-837D-41D5-A8CB-79FF9E7F8269}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizGame.Data", "Data\QuizGame.Data\QuizGame.Data.csproj", "{68406155-921A-4AEA-9ED1-3943EA28886B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizGame.Data.Models", "Data\QuizGame.Data.Models\QuizGame.Data.Models.csproj", "{BCE05AD0-618C-4E71-8F86-225283B5CF2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0C554D34-BEAA-4047-A0FD-7043993083F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "Tests\Sandbox\Sandbox.csproj", "{63CB3355-5BE8-44BF-A895-F8FF9DB370D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuizGame.Data.Common", "Data\GuizGame.Data.Common\GuizGame.Data.Common.csproj", "{B6C62204-8B38-4D01-B4DA-F0C81463A51F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,14 @@ Global
 		{BCE05AD0-618C-4E71-8F86-225283B5CF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE05AD0-618C-4E71-8F86-225283B5CF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE05AD0-618C-4E71-8F86-225283B5CF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CB3355-5BE8-44BF-A895-F8FF9DB370D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CB3355-5BE8-44BF-A895-F8FF9DB370D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CB3355-5BE8-44BF-A895-F8FF9DB370D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CB3355-5BE8-44BF-A895-F8FF9DB370D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C62204-8B38-4D01-B4DA-F0C81463A51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C62204-8B38-4D01-B4DA-F0C81463A51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C62204-8B38-4D01-B4DA-F0C81463A51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C62204-8B38-4D01-B4DA-F0C81463A51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +53,8 @@ Global
 		{5DC82727-0BF3-47DE-AE18-5303E7DA39C5} = {A5FCA498-837D-41D5-A8CB-79FF9E7F8269}
 		{68406155-921A-4AEA-9ED1-3943EA28886B} = {E2FE5998-60AE-4A5D-8FE8-15057E7CF0EE}
 		{BCE05AD0-618C-4E71-8F86-225283B5CF2C} = {E2FE5998-60AE-4A5D-8FE8-15057E7CF0EE}
+		{63CB3355-5BE8-44BF-A895-F8FF9DB370D9} = {0C554D34-BEAA-4047-A0FD-7043993083F7}
+		{B6C62204-8B38-4D01-B4DA-F0C81463A51F} = {E2FE5998-60AE-4A5D-8FE8-15057E7CF0EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D3E9740-34BC-48C4-B790-7C0A1E90A845}
