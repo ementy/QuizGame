@@ -27,6 +27,11 @@ namespace QuizGame.Data
         {
             return this.dbSet;
         }
+        public Task<TEntity> FindByIdAsync(object id)
+        {
+            return this.dbSet.FindAsync(id);
+        }
+
         public void Update(TEntity entity)
         {
             this.dbSet.Update(entity);

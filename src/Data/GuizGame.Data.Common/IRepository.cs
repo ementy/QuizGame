@@ -8,6 +8,8 @@ namespace GuizGame.Data.Common
     {
         IQueryable<TEntity> All();
 
+        Task<TEntity> FindByIdAsync(object id);
+
         Task AddAsync(TEntity entity);
 
         void Update(TEntity entity);
