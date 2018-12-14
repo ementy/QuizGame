@@ -49,6 +49,8 @@ namespace QuizApp.Web
             //Application services
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
             services.AddScoped<IQuestionsService, QuestionsService>();
+            services.AddScoped<IAnswersService, AnswersService>();
+            services.AddScoped<IAchievementsService, AchievementsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
