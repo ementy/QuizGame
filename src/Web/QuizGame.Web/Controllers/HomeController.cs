@@ -19,7 +19,6 @@ namespace QuizApp.Web.Controllers
             this.questionsService = questionsService;
         }
 
-
         public IActionResult Index()
         {
             var questions = this.questionsService.GetRandomQuestion(1);
