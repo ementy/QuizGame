@@ -5,14 +5,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuizApp.Web.Models;
+using QuizGame.Services.DataServices.Contracts;
+using QuizGame.Services.Models.Home;
 
 namespace QuizApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IQuestionsService questionsService;
+
+        public HomeController(IQuestionsService questionsService)
+        {
+            this.questionsService = questionsService;
+        }
+
+
         public IActionResult Index()
         {
-            return View();
+            var questions = this.questionsService.GetRandomQuestion(1);
+
+            var viewModel = new IndexViewModel
+            {
+                Questions = questions,
+            };
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

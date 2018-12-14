@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QuizGame.Data;
 using QuizGame.Data.Models;
+using QuizGame.Services.DataServices;
+using QuizGame.Services.DataServices.Contracts;
 
 namespace QuizApp.Web
 {
@@ -46,6 +48,7 @@ namespace QuizApp.Web
 
             //Application services
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+            services.AddScoped<IQuestionsService, QuestionsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

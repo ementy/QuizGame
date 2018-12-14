@@ -1,8 +1,26 @@
-﻿@{
+﻿@model QuizGame.Services.Models.Home.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row">
+    @foreach (var question in Model.Questions)
+    {
+        <div class="col-md-4 clearfix">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.Raw(question.Content)
+                </div>
+                <div class="panel-footer">
+                    @question.CategoryName
+                    <a class="btn btn-default btn-sm" asp-controller="Jokes" asp-action="Details" asp-route-id="@question.Id">View</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

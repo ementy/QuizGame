@@ -17,6 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\QuizGame.Data.Models\QuizGame.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\QuizGame.Data\QuizGame.Data.csproj" />
+    <ProjectReference Include="..\..\Services\QuizGame.Services.DataServices\QuizGame.Services.DataServices.csproj" />
+    <ProjectReference Include="..\..\Services\QuizGame.Services.Models\QuizGame.Services.Models.csproj" />
   </ItemGroup>
 
 </Project>
