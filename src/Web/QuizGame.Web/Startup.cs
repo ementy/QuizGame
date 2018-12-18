@@ -56,6 +56,11 @@ namespace QuizApp.Web
                 {
                     twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
                     twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+                })
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
 
 
